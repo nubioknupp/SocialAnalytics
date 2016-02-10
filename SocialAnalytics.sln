@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{15F40724-30FF-40A1-B34D-2471D9847713}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{7B32E0EC-7C8F-4293-B036-980B51A79CD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{AA0DC40A-14C2-4746-B55D-0AC4EC1DCD14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{021D3E63-06BE-417F-8BE7-45EC151716BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{8523A17B-9B84-4E47-8546-276B54711D63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{C3A42521-2DE8-455A-9FB4-219C578AEBAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{CE77097C-FA6E-409F-9AD7-1F8A4D6CD7ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.3 - ServiceAgents", "5.3 - ServiceAgents", "{A1DC0AC3-8600-4244-9C80-574D50EEFADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Infra.ServiceAgents.GitHubApi", "src\SocialAnalytics.Infra.ServiceAgents.GitHubApi\SocialAnalytics.Infra.ServiceAgents.GitHubApi.csproj", "{D2FF2681-7297-4133-B5D8-1D2D3D7B16AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Domain", "src\SocialAnalytics.Domain\SocialAnalytics.Domain.csproj", "{64748147-BE9E-4D36-95B4-4C6E23A70E3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Infra.Data", "src\SocialAnalytics.Infra.Data\SocialAnalytics.Infra.Data.csproj", "{5807E142-48F4-405C-AD8D-FC41053103A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Infra.CrossCutting.MvcFilters", "src\SocialAnalytics.Infra.CrossCutting.MvcFilters\SocialAnalytics.Infra.CrossCutting.MvcFilters.csproj", "{F7ADEF85-E306-4ED1-87BB-E86D715FFEE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Application", "src\SocialAnalytics.Application\SocialAnalytics.Application.csproj", "{FA71A668-4CC2-4CB1-B7C0-B619945640DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Infra.CrossCutting.IoC", "src\SocialAnalytics.Infra.CrossCutting.IoC\SocialAnalytics.Infra.CrossCutting.IoC.csproj", "{BE66B85B-259F-42A8-BE9D-0ABD52744B5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Services.REST.SocialAPI", "src\SocialAnalytics.Services.REST.SocialAPI\SocialAnalytics.Services.REST.SocialAPI.csproj", "{5616A8F5-A49E-40A9-9532-4ACF64218ED7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2FF2681-7297-4133-B5D8-1D2D3D7B16AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2FF2681-7297-4133-B5D8-1D2D3D7B16AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FF2681-7297-4133-B5D8-1D2D3D7B16AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2FF2681-7297-4133-B5D8-1D2D3D7B16AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64748147-BE9E-4D36-95B4-4C6E23A70E3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64748147-BE9E-4D36-95B4-4C6E23A70E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64748147-BE9E-4D36-95B4-4C6E23A70E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64748147-BE9E-4D36-95B4-4C6E23A70E3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5807E142-48F4-405C-AD8D-FC41053103A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5807E142-48F4-405C-AD8D-FC41053103A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5807E142-48F4-405C-AD8D-FC41053103A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5807E142-48F4-405C-AD8D-FC41053103A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7ADEF85-E306-4ED1-87BB-E86D715FFEE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7ADEF85-E306-4ED1-87BB-E86D715FFEE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7ADEF85-E306-4ED1-87BB-E86D715FFEE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7ADEF85-E306-4ED1-87BB-E86D715FFEE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA71A668-4CC2-4CB1-B7C0-B619945640DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA71A668-4CC2-4CB1-B7C0-B619945640DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA71A668-4CC2-4CB1-B7C0-B619945640DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA71A668-4CC2-4CB1-B7C0-B619945640DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE66B85B-259F-42A8-BE9D-0ABD52744B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE66B85B-259F-42A8-BE9D-0ABD52744B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE66B85B-259F-42A8-BE9D-0ABD52744B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE66B85B-259F-42A8-BE9D-0ABD52744B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5616A8F5-A49E-40A9-9532-4ACF64218ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5616A8F5-A49E-40A9-9532-4ACF64218ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5616A8F5-A49E-40A9-9532-4ACF64218ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5616A8F5-A49E-40A9-9532-4ACF64218ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C3A42521-2DE8-455A-9FB4-219C578AEBAB} = {8523A17B-9B84-4E47-8546-276B54711D63}
+		{CE77097C-FA6E-409F-9AD7-1F8A4D6CD7ED} = {8523A17B-9B84-4E47-8546-276B54711D63}
+		{A1DC0AC3-8600-4244-9C80-574D50EEFADF} = {8523A17B-9B84-4E47-8546-276B54711D63}
+		{D2FF2681-7297-4133-B5D8-1D2D3D7B16AE} = {A1DC0AC3-8600-4244-9C80-574D50EEFADF}
+		{64748147-BE9E-4D36-95B4-4C6E23A70E3F} = {021D3E63-06BE-417F-8BE7-45EC151716BD}
+		{5807E142-48F4-405C-AD8D-FC41053103A0} = {C3A42521-2DE8-455A-9FB4-219C578AEBAB}
+		{F7ADEF85-E306-4ED1-87BB-E86D715FFEE8} = {CE77097C-FA6E-409F-9AD7-1F8A4D6CD7ED}
+		{FA71A668-4CC2-4CB1-B7C0-B619945640DF} = {AA0DC40A-14C2-4746-B55D-0AC4EC1DCD14}
+		{BE66B85B-259F-42A8-BE9D-0ABD52744B5F} = {A1DC0AC3-8600-4244-9C80-574D50EEFADF}
+		{5616A8F5-A49E-40A9-9532-4ACF64218ED7} = {7B32E0EC-7C8F-4293-B036-980B51A79CD3}
+	EndGlobalSection
+EndGlobal
