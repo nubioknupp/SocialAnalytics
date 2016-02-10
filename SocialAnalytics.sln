@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Infra.Cross
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Services.REST.SocialAPI", "src\SocialAnalytics.Services.REST.SocialAPI\SocialAnalytics.Services.REST.SocialAPI.csproj", "{5616A8F5-A49E-40A9-9532-4ACF64218ED7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Domain.Tests", "tests\SocialAnalytics.Domain.Tests\SocialAnalytics.Domain.Tests.csproj", "{50A3A47B-28DC-4E22-AB80-FCD72DADF7A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{5616A8F5-A49E-40A9-9532-4ACF64218ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5616A8F5-A49E-40A9-9532-4ACF64218ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5616A8F5-A49E-40A9-9532-4ACF64218ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50A3A47B-28DC-4E22-AB80-FCD72DADF7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A3A47B-28DC-4E22-AB80-FCD72DADF7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A3A47B-28DC-4E22-AB80-FCD72DADF7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A3A47B-28DC-4E22-AB80-FCD72DADF7A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +88,6 @@ Global
 		{FA71A668-4CC2-4CB1-B7C0-B619945640DF} = {AA0DC40A-14C2-4746-B55D-0AC4EC1DCD14}
 		{BE66B85B-259F-42A8-BE9D-0ABD52744B5F} = {A1DC0AC3-8600-4244-9C80-574D50EEFADF}
 		{5616A8F5-A49E-40A9-9532-4ACF64218ED7} = {7B32E0EC-7C8F-4293-B036-980B51A79CD3}
+		{50A3A47B-28DC-4E22-AB80-FCD72DADF7A6} = {021D3E63-06BE-417F-8BE7-45EC151716BD}
 	EndGlobalSection
 EndGlobal
