@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Domain.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Infra.ServiceAgents.GitHubApi", "src\SocialAnalytics.Infra.ServiceAgents.GitHubApi\SocialAnalytics.Infra.ServiceAgents.GitHubApi.csproj", "{1C8F9A29-34BF-49A3-A67D-6ED814EE6473}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAnalytics.Infra.CrossCutting.Universal", "src\SocialAnalytics.Infra.CrossCutting.Universal\SocialAnalytics.Infra.CrossCutting.Universal.csproj", "{A5EFECBF-F3F2-4476-BF07-6BC018CBB9E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{1C8F9A29-34BF-49A3-A67D-6ED814EE6473}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C8F9A29-34BF-49A3-A67D-6ED814EE6473}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C8F9A29-34BF-49A3-A67D-6ED814EE6473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5EFECBF-F3F2-4476-BF07-6BC018CBB9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5EFECBF-F3F2-4476-BF07-6BC018CBB9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5EFECBF-F3F2-4476-BF07-6BC018CBB9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5EFECBF-F3F2-4476-BF07-6BC018CBB9E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +88,6 @@ Global
 		{5616A8F5-A49E-40A9-9532-4ACF64218ED7} = {7B32E0EC-7C8F-4293-B036-980B51A79CD3}
 		{50A3A47B-28DC-4E22-AB80-FCD72DADF7A6} = {021D3E63-06BE-417F-8BE7-45EC151716BD}
 		{1C8F9A29-34BF-49A3-A67D-6ED814EE6473} = {A1DC0AC3-8600-4244-9C80-574D50EEFADF}
+		{A5EFECBF-F3F2-4476-BF07-6BC018CBB9E0} = {CE77097C-FA6E-409F-9AD7-1F8A4D6CD7ED}
 	EndGlobalSection
 EndGlobal

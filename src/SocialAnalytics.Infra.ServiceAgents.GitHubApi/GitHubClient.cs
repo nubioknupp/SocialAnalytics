@@ -10,7 +10,7 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
 {
     public class GitHubClient
     {
-        private const string GitHubToken = "";
+        private const string GitHubToken = "b0bdaf4f3d682ba61ba183c9d8e85d020a430b4d";
         private const string UrlApiGitHub = "https://api.github.com";
         private const string UserAgent = "SocialAnalytics";
 

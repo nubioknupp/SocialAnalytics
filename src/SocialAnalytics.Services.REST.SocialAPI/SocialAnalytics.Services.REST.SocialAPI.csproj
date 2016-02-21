@@ -143,6 +143,10 @@
       <Project>{fa71a668-4cc2-4cb1-b7c0-b619945640df}</Project>
       <Name>SocialAnalytics.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SocialAnalytics.Infra.CrossCutting.Universal\SocialAnalytics.Infra.CrossCutting.Universal.csproj">
+      <Project>{a5efecbf-f3f2-4476-bf07-6bc018cbb9e0}</Project>
+      <Name>SocialAnalytics.Infra.CrossCutting.Universal</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,6 +5,7 @@ using SocialAnalytics.Application.ViewModels;
 using SocialAnalytics.Domain.Entities;
 using SocialAnalytics.Infra.Data.Repository;
 using SocialAnalytics.Infra.ServiceAgents.GitHubApi;
+using SocialAnalytics.Infra.CrossCutting.Universal;
 
 namespace SocialAnalytics.Application
 {
@@ -23,16 +24,19 @@ namespace SocialAnalytics.Application
         {
             foreach (var gitHub in gitHubs)
             {
-                var isAdd = false;
-                var user = _userService.FindByEmail(gitHub.Email);
+                var email = gitHub.Email + "";
+                if (email.Equals("")) continue;
 
-                if (IsAnyNullOrEmpty(user))
+                var isAdd = false;
+                var user = _userService.FindByEmail(email);
+
+                if (NullOrEmpty.IsAnyNullOrEmptyObject(user))
                 {
                     isAdd = true;
-                    user = FindGitByEmail(gitHub.Email);
+                    user = FindGitByEmail(email);
                 }
                     
-                if (IsAnyNullOrEmpty(user)) continue;
+                if (NullOrEmpty.IsAnyNullOrEmptyObject(user)) continue;
 
                 var stargazers = GetStargazers(user.Login);
                 user.Stargazers.Add(stargazers);
@@ -56,22 +60,22 @@ namespace SocialAnalytics.Application
             return user;
         }
 
-        private bool IsAnyNullOrEmpty(object myObject)
-        {
-            if (myObject == null) return true;
-            foreach (var pi in myObject.GetType().GetProperties())
-            {
-                if (pi.PropertyType == typeof(string))
-                {
-                    var value = (string)pi.GetValue(myObject);
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+        //private bool IsAnyNullOrEmpty(object myObject)
+        //{
+        //    if (myObject == null) return true;
+        //    foreach (var pi in myObject.GetType().GetProperties())
+        //    {
+        //        if (pi.PropertyType == typeof(string))
+        //        {
+        //            var value = (string)pi.GetValue(myObject);
+        //            if (string.IsNullOrEmpty(value))
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
 
         private Stargazers GetStargazers(string login)
         {
