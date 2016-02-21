@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SocialAnalytics.Infra.ServiceAgents.GithubApi")]
+[assembly: AssemblyTitle("SocialAnalytics.Infra.ServiceAgents.GitHubApi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SocialAnalytics.Infra.ServiceAgents.GithubApi")]
+[assembly: AssemblyProduct("SocialAnalytics.Infra.ServiceAgents.GitHubApi")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d2ff2681-7297-4133-b5d8-1d2d3d7b16ae")]
+[assembly: Guid("1c8f9a29-34bf-49a3-a67d-6ed814ee6473")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -6,7 +6,7 @@ namespace SocialAnalytics.Domain.Entities
     {
         public Stargazers()
         {
-            StargazersId = new Guid();
+            StargazersId = Guid.NewGuid(); ;
         }
 
         public Guid StargazersId { get; set; }

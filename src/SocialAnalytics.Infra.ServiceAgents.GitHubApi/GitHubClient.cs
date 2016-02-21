@@ -33,6 +33,14 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
             return repositories;
         }
 
+        public User FindByEmail(string email)
+        {
+            var login = GetLoginByEmail(email);
+
+            return GetUserByLogin(login);
+        }
+
+
         public User GetUserByLogin(string login)
         {
             var url = $"{UrlApiGitHub}/users/{login}?access_token={GitHubToken}";
@@ -43,37 +51,40 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
             using (var response = request.GetResponse() as HttpWebResponse)
             {
                 var reader = new StreamReader(response.GetResponseStream());
-                var json = reader.ReadToEnd();
-                var result = JsonConvert.DeserializeObject<dynamic>(json);
+                var content = reader.ReadToEnd();
+                var result = JsonConvert.DeserializeObject<dynamic>(content);
 
                 user.Email = result.email.ToString();
                 user.Login = result.login.ToString();
                 user.Name = result.name.ToString();
             }
+
             return user;
         }
 
         public string GetLoginByEmail(string email)
         {
+            var login = "";
+
             var url = $"{UrlApiGitHub}/search/users?q={email}&access_token={GitHubToken}";
             var request = WebRequest.Create(url) as HttpWebRequest;
-            var login = "";
 
             request.UserAgent = UserAgent;
             using (var response = request.GetResponse() as HttpWebResponse)
             {
                 var reader = new StreamReader(response.GetResponseStream());
-                var json = reader.ReadToEnd();
-                var result = JsonConvert.DeserializeObject<dynamic>(json);
-
+                var content = reader.ReadToEnd();
+                var result = JsonConvert.DeserializeObject<dynamic>(content);
                 login = result.items[0].login.ToString();
             }
+
             return login;
         }
 
-        public int GetCountStargazers(IEnumerable<string> repositories)
+        public int GetCountStargazers(string login)
         {
             var count = 0;
+            var repositories = GetRepositories(login);
 
             foreach (var repository in repositories)
             {
@@ -84,11 +95,26 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
                 {
                     var reader = new StreamReader(response.GetResponseStream());
                     var content = reader.ReadToEnd();
-                    var json = JArray.Parse(content);
 
-                    count = count + json.Count;
+                    count = count + AnalyticsCountStargazers(content, login);
                 }
             }
+
+            return count;
+        }
+
+        private int AnalyticsCountStargazers(string content, string loginRepository)
+        {
+            var results = JsonConvert.DeserializeObject<dynamic>(content);
+            var count = 0;
+
+            foreach (var result in results)
+            {
+                var login = result.login.ToString();
+
+                if (!login.Equals(loginRepository)) count = count + 1;
+            }
+
             return count;
         }
     }

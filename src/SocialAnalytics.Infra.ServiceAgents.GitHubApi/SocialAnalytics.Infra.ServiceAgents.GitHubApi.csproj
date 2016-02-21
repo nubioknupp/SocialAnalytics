@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D2FF2681-7297-4133-B5D8-1D2D3D7B16AE}</ProjectGuid>
+    <ProjectGuid>{1C8F9A29-34BF-49A3-A67D-6ED814EE6473}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SocialAnalytics.Infra.ServiceAgents.GithubApi</RootNamespace>
-    <AssemblyName>SocialAnalytics.Infra.ServiceAgents.GithubApi</AssemblyName>
+    <RootNamespace>SocialAnalytics.Infra.ServiceAgents.GitHubApi</RootNamespace>
+    <AssemblyName>SocialAnalytics.Infra.ServiceAgents.GitHubApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,13 +48,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SocialAnalytics.Domain\SocialAnalytics.Domain.csproj">
       <Project>{64748147-be9e-4d36-95b4-4c6e23a70e3f}</Project>
       <Name>SocialAnalytics.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

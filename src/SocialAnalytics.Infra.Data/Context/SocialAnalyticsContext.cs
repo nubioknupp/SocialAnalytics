@@ -9,7 +9,6 @@ namespace SocialAnalytics.Infra.Data.Context
     {
         public SocialAnalyticsContext() : base("SocialConnection")
         {
-
         }
 
         public DbSet<User> Users { get; set; }

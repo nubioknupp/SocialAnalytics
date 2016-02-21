@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="GitHubAppService.cs" />
+    <Compile Include="Interfaces\IGitHubAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\GitHub.cs" />
+    <Compile Include="ViewModels\StargazersCount.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SocialAnalytics.Domain\SocialAnalytics.Domain.csproj">
+      <Project>{64748147-be9e-4d36-95b4-4c6e23a70e3f}</Project>
+      <Name>SocialAnalytics.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialAnalytics.Infra.Data\SocialAnalytics.Infra.Data.csproj">
+      <Project>{5807e142-48f4-405c-ad8d-fc41053103a0}</Project>
+      <Name>SocialAnalytics.Infra.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialAnalytics.Infra.ServiceAgents.GitHubApi\SocialAnalytics.Infra.ServiceAgents.GitHubApi.csproj">
+      <Project>{1c8f9a29-34bf-49a3-a67d-6ed814ee6473}</Project>
+      <Name>SocialAnalytics.Infra.ServiceAgents.GitHubApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
