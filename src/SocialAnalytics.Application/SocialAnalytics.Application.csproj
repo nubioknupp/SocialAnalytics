@@ -56,10 +56,6 @@
       <Project>{a5efecbf-f3f2-4476-bf07-6bc018cbb9e0}</Project>
       <Name>SocialAnalytics.Infra.CrossCutting.Universal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SocialAnalytics.Infra.Data\SocialAnalytics.Infra.Data.csproj">
-      <Project>{5807e142-48f4-405c-ad8d-fc41053103a0}</Project>
-      <Name>SocialAnalytics.Infra.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SocialAnalytics.Infra.ServiceAgents.GitHubApi\SocialAnalytics.Infra.ServiceAgents.GitHubApi.csproj">
       <Project>{1c8f9a29-34bf-49a3-a67d-6ed814ee6473}</Project>
       <Name>SocialAnalytics.Infra.ServiceAgents.GitHubApi</Name>
