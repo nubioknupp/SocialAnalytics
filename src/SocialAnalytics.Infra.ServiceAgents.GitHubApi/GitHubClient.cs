@@ -11,7 +11,7 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
 {
     public class GitHubClient
     {
-        private const string GitHubToken = "05333a3467cceec16446b9056fbc6d7d94f2cced";
+        private const string GitHubToken = "";
         private const string UrlApiGitHub = "https://api.github.com";
         private const string UserAgent = "SocialAnalytics";
 
@@ -118,4 +118,7 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
                 if (!login.Equals(loginRepository)) count = count + 1;
             }
 
-        
+            return count;
+        }
+    }
+}
