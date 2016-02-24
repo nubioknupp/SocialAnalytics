@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SocialAnalytics.Domain.Entities;
@@ -10,7 +11,7 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
 {
     public class GitHubClient
     {
-        private const string GitHubToken = "b0bdaf4f3d682ba61ba183c9d8e85d020a430b4d";
+        private const string GitHubToken = "";
         private const string UrlApiGitHub = "https://api.github.com";
         private const string UserAgent = "SocialAnalytics";
 
@@ -75,13 +76,15 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
                 var reader = new StreamReader(response.GetResponseStream());
                 var content = reader.ReadToEnd();
                 var result = JsonConvert.DeserializeObject<dynamic>(content);
-                login = result.items[0].login.ToString();
+                var str = result.ToString();
+
+                if (str.IndexOf("login") >= 0) login = result.items[0].login.ToString();
             }
 
             return login;
         }
 
-        public int GetCountStargazers(string login)
+       public int GetCountStargazers(string login)
         {
             var count = 0;
             var repositories = GetRepositories(login);
@@ -117,5 +120,45 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
 
             return count;
         }
+
+        public int GetCountRepositories(string login)
+        {
+            return GetRepositories(login).Count();
+        }
+
+        public int GetCountFollowers(string login)
+        {
+            var count = 0;
+            var url = $"{UrlApiGitHub}/users/{login}/followers?access_token={GitHubToken}";
+            var request = WebRequest.Create(url) as HttpWebRequest;
+            request.UserAgent = UserAgent;
+            using (var response = request.GetResponse() as HttpWebResponse)
+            {
+                var reader = new StreamReader(response.GetResponseStream());
+                var content = reader.ReadToEnd();
+
+                count = JArray.Parse(content).Count;
+            }
+
+            return count;
+        }
+
+        public int GetCountFollowing(string login)
+        {
+            var count = 0;
+            var url = $"{UrlApiGitHub}/users/{login}/following?access_token={GitHubToken}";
+            var request = WebRequest.Create(url) as HttpWebRequest;
+            request.UserAgent = UserAgent;
+            using (var response = request.GetResponse() as HttpWebResponse)
+            {
+                var reader = new StreamReader(response.GetResponseStream());
+                var content = reader.ReadToEnd();
+
+                count = JArray.Parse(content).Count;
+            }
+
+            return count;
+        }
+
     }
 }

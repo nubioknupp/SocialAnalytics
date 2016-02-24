@@ -1,9 +1,7 @@
 ﻿namespace SocialAnalytics.Application.ViewModels
 {
-    public class StargazersCount
+    public class GitHubRequest
     {
         public string Email { get; set; }
-        public int Count { get; set; }
-
     }
 }

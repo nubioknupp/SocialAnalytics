@@ -44,8 +44,8 @@
     <Compile Include="GitHubAppService.cs" />
     <Compile Include="Interfaces\IGitHubAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\GitHub.cs" />
-    <Compile Include="ViewModels\StargazersCount.cs" />
+    <Compile Include="ViewModels\GitHubRequest.cs" />
+    <Compile Include="ViewModels\GitHubCountResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocialAnalytics.Domain\SocialAnalytics.Domain.csproj">
@@ -55,10 +55,6 @@
     <ProjectReference Include="..\SocialAnalytics.Infra.CrossCutting.Universal\SocialAnalytics.Infra.CrossCutting.Universal.csproj">
       <Project>{a5efecbf-f3f2-4476-bf07-6bc018cbb9e0}</Project>
       <Name>SocialAnalytics.Infra.CrossCutting.Universal</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocialAnalytics.Infra.Data\SocialAnalytics.Infra.Data.csproj">
-      <Project>{5807e142-48f4-405c-ad8d-fc41053103a0}</Project>
-      <Name>SocialAnalytics.Infra.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\SocialAnalytics.Infra.ServiceAgents.GitHubApi\SocialAnalytics.Infra.ServiceAgents.GitHubApi.csproj">
       <Project>{1c8f9a29-34bf-49a3-a67d-6ed814ee6473}</Project>

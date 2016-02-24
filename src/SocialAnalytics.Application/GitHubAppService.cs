@@ -1,116 +1,157 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SocialAnalytics.Application.Interfaces;
 using SocialAnalytics.Application.ViewModels;
-using SocialAnalytics.Domain.Entities;
-using SocialAnalytics.Infra.Data.Repository;
 using SocialAnalytics.Infra.ServiceAgents.GitHubApi;
-using SocialAnalytics.Infra.CrossCutting.Universal;
 
 namespace SocialAnalytics.Application
 {
     public class GitHubAppService : IGitHubAppService
     {
-        private readonly UserRepository _userService = new UserRepository();
-        private readonly DateTime _dateImport;
+        #region Stargazers
 
-        public GitHubAppService()
+        public IEnumerable<GitHubCountResult> GetStargazersCount(ICollection<GitHubRequest> requests)
         {
-            _dateImport = DateTime.Now;
-        }
+            var stargazersCounts = new List<GitHubCountResult>();
 
-
-        public IEnumerable<StargazersCount> ProcessStargazerses(ICollection<GitHub> gitHubs)
-        {
-            foreach (var gitHub in gitHubs)
+            foreach (var request in requests)
             {
-                var email = gitHub.Email + "";
+                var countResult = new GitHubCountResult();
+                var email = request.Email + "";
                 if (email.Equals("")) continue;
 
-                var isAdd = false;
-                var user = _userService.FindByEmail(email);
+                var login = GetLoginByEmail(email);
 
-                if (NullOrEmpty.IsAnyNullOrEmptyObject(user))
-                {
-                    isAdd = true;
-                    user = FindGitByEmail(email);
-                }
-                    
-                if (NullOrEmpty.IsAnyNullOrEmptyObject(user)) continue;
+                if (login.Equals("")) continue;
 
-                var stargazers = GetStargazers(user.Login);
-                user.Stargazers.Add(stargazers);
+                countResult.Email = email;
+                countResult.Count = GetCountStargazers(login);
 
-                if (isAdd)
-                {
-                    _userService.Add(user);
-                    continue;
-                }
-
-               _userService.Update(user);
-            }
-
-           return GetStargazersCounts();
-        }
-
-        private User FindGitByEmail(string email)
-        {
-            var gitHubClient = new GitHubClient();
-            var user = gitHubClient.FindByEmail(email);
-            return user;
-        }
-
-        //private bool IsAnyNullOrEmpty(object myObject)
-        //{
-        //    if (myObject == null) return true;
-        //    foreach (var pi in myObject.GetType().GetProperties())
-        //    {
-        //        if (pi.PropertyType == typeof(string))
-        //        {
-        //            var value = (string)pi.GetValue(myObject);
-        //            if (string.IsNullOrEmpty(value))
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        private Stargazers GetStargazers(string login)
-        {
-            var stargazers = new Stargazers();
-            var gitHubClient = new GitHubClient();
- 
-            stargazers.Count = gitHubClient.GetCountStargazers(login);
-            stargazers.DateImport = _dateImport;
-
-            return stargazers;
-        }
-
-        private IEnumerable<StargazersCount> GetStargazersCounts()
-        {
-            var users = _userService.FindLastRecord();
-            var stargazersCounts = new List<StargazersCount>();
-
-            foreach (var user in users)
-            {
-                var stargazersCount = new StargazersCount();
-
-                stargazersCount.Email = user.Email;
-
-                foreach (var stargazers in user.Stargazers)
-                {
-                    stargazersCount.Count = stargazers.Count;
-                }
-
-                stargazersCounts.Add(stargazersCount);
+                stargazersCounts.Add(countResult);
             }
 
             return stargazersCounts;
         }
 
+        private int GetCountStargazers(string login)
+        {
+            var gitHubClient = new GitHubClient();
 
+            return gitHubClient.GetCountStargazers(login);
+        }
 
+        #endregion
+
+        #region Repositories
+
+        public IEnumerable<GitHubCountResult> GetRepositoriesCount(ICollection<GitHubRequest> requests)
+        {
+            var stargazersCounts = new List<GitHubCountResult>();
+
+            foreach (var request in requests)
+            {
+                var countResult = new GitHubCountResult();
+                var email = request.Email + "";
+                if (email.Equals("")) continue;
+
+                var login = GetLoginByEmail(email);
+
+                if (login.Equals("")) continue;
+
+                countResult.Email = email;
+                countResult.Count = GetCountRepositories(login);
+
+                stargazersCounts.Add(countResult);
+            }
+
+            return stargazersCounts;
+        }
+
+        private int GetCountRepositories(string login)
+        {
+            var gitHubClient = new GitHubClient();
+
+            return gitHubClient.GetCountRepositories(login);
+        }
+
+        #endregion
+
+        #region Followers
+
+        public IEnumerable<GitHubCountResult> GetFollowersCount(ICollection<GitHubRequest> requests)
+        {
+            var stargazersCounts = new List<GitHubCountResult>();
+
+            foreach (var request in requests)
+            {
+                var countResult = new GitHubCountResult();
+                var email = request.Email + "";
+                if (email.Equals("")) continue;
+
+                var login = GetLoginByEmail(email);
+
+                if (login.Equals("")) continue;
+
+                countResult.Email = email;
+                countResult.Count = GetCountFollowers(login);
+
+                stargazersCounts.Add(countResult);
+            }
+
+            return stargazersCounts;
+        }
+
+        private int GetCountFollowers(string login)
+        {
+            var gitHubClient = new GitHubClient();
+
+            return gitHubClient.GetCountFollowers(login);
+        }
+
+        #endregion
+
+        #region Following
+
+        public IEnumerable<GitHubCountResult> GetFollowingCount(ICollection<GitHubRequest> requests)
+        {
+            var stargazersCounts = new List<GitHubCountResult>();
+
+            foreach (var request in requests)
+            {
+                var countResult = new GitHubCountResult();
+                var email = request.Email + "";
+                if (email.Equals("")) continue;
+
+                var login = GetLoginByEmail(email);
+
+                if (login.Equals("")) continue;
+
+                countResult.Email = email;
+                countResult.Count = GetCountFollowing(login);
+
+                stargazersCounts.Add(countResult);
+            }
+
+            return stargazersCounts;
+        }
+
+        private int GetCountFollowing(string login)
+        {
+            var gitHubClient = new GitHubClient();
+
+            return gitHubClient.GetCountFollowing(login);
+        }
+
+        #endregion
+
+        #region Code Shared
+
+        private string GetLoginByEmail(string email)
+        {
+            var gitHubClient = new GitHubClient();
+
+            return gitHubClient.GetLoginByEmail(email);
+        }
+
+        #endregion
     }
 }

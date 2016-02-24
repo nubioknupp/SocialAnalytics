@@ -35,14 +35,7 @@
   <ItemGroup>
     <Compile Include="Entities\Stargazers.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Interfaces\Repository\IRepository.cs" />
-    <Compile Include="Interfaces\Repository\IStargazersRepository.cs" />
-    <Compile Include="Interfaces\Repository\IUserRepository.cs" />
-    <Compile Include="Interfaces\Services\IStargazersService.cs" />
-    <Compile Include="Interfaces\Services\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\StargazersService.cs" />
-    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
