@@ -5,6 +5,6 @@ namespace SocialAnalytics.Application.Interfaces
 {
     public interface IGitHubAppService
     {
-        IEnumerable<StargazersCount> ProcessStargazerses(ICollection<GitHub> gitHubs);
+        IEnumerable<GitHubCountResult> GetStargazersCount(ICollection<GitHubRequest> gitHubs);
     }
 }

@@ -44,8 +44,8 @@
     <Compile Include="GitHubAppService.cs" />
     <Compile Include="Interfaces\IGitHubAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\GitHub.cs" />
-    <Compile Include="ViewModels\StargazersCount.cs" />
+    <Compile Include="ViewModels\GitHubRequest.cs" />
+    <Compile Include="ViewModels\GitHubCountResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocialAnalytics.Domain\SocialAnalytics.Domain.csproj">

@@ -19,17 +19,59 @@ namespace SocialAnalytics.Services.REST.SocialAPI.Controllers
                                            "para um ou mais parâmetros necessários.";
 
         [HttpPost]
-        [Route("stargazers")]
-        public HttpResponseMessage PostStargazers(ICollection<GitHub> gitHubs)
+        [Route("stargazers/count")]
+        public HttpResponseMessage PostStargazersCountCount(ICollection<GitHubRequest> requests)
         {
-            if (NullOrEmpty.IsAnyNullOrEmptyList(gitHubs))
+            if (NullOrEmpty.IsAnyNullOrEmptyList(requests))
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, MessageErro);
             }
 
-            var stargazerses = _gitHubAppService.ProcessStargazerses(gitHubs);
+            var results = _gitHubAppService.GetStargazersCount(requests);
 
-            return Request.CreateResponse(HttpStatusCode.OK, stargazerses);
+            return Request.CreateResponse(HttpStatusCode.OK, results);
+        }
+
+        [HttpPost]
+        [Route("following/count")]
+        public HttpResponseMessage PostFollowingCount(ICollection<GitHubRequest> requests)
+        {
+            if (NullOrEmpty.IsAnyNullOrEmptyList(requests))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageErro);
+            }
+
+            var results = _gitHubAppService.GetFollowingCount(requests);
+
+            return Request.CreateResponse(HttpStatusCode.OK, results);
+        }
+
+        [HttpPost]
+        [Route("followers/count")]
+        public HttpResponseMessage PostFollowersCount(ICollection<GitHubRequest> requests)
+        {
+            if (NullOrEmpty.IsAnyNullOrEmptyList(requests))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageErro);
+            }
+
+            var results = _gitHubAppService.GetFollowersCount(requests);
+
+            return Request.CreateResponse(HttpStatusCode.OK, results);
+        }
+
+        [HttpPost]
+        [Route("repositories/count")]
+        public HttpResponseMessage PostRepositoriesCount(ICollection<GitHubRequest> requests)
+        {
+            if (NullOrEmpty.IsAnyNullOrEmptyList(requests))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageErro);
+            }
+
+            var results = _gitHubAppService.GetRepositoriesCount(requests);
+
+            return Request.CreateResponse(HttpStatusCode.OK, results);
         }
     }
 }
