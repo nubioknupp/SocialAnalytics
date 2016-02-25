@@ -84,7 +84,7 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
             return login;
         }
 
-       public int GetCountStargazers(string login)
+        public int GetCountStargazers(string login)
         {
             var count = 0;
             var repositories = GetRepositories(login);
@@ -160,5 +160,26 @@ namespace SocialAnalytics.Infra.ServiceAgents.GitHubApi
             return count;
         }
 
+        public int GetCountCommits(string login)
+        {
+            var count = 0;
+            var repositories = GetRepositories(login);
+
+            foreach (var repository in repositories)
+            {
+                var url = $"{UrlApiGitHub}/repos/{repository}/commits?access_token={GitHubToken}";
+                var request = WebRequest.Create(url) as HttpWebRequest;
+                request.UserAgent = UserAgent;
+                using (var response = request.GetResponse() as HttpWebResponse)
+                {
+                    var reader = new StreamReader(response.GetResponseStream());
+                    var content = reader.ReadToEnd();
+
+                    count = count + JArray.Parse(content).Count;
+                }
+            }
+
+            return count;
+        }
     }
 }

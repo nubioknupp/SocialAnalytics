@@ -73,5 +73,19 @@ namespace SocialAnalytics.Services.REST.SocialAPI.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, results);
         }
+
+        [HttpPost]
+        [Route("commits/count")]
+        public HttpResponseMessage PostCommitsCount(ICollection<GitHubRequest> requests)
+        {
+            if (NullOrEmpty.IsAnyNullOrEmptyList(requests))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageErro);
+            }
+
+            var results = _gitHubAppService.GetCommitsCount(requests);
+
+            return Request.CreateResponse(HttpStatusCode.OK, results);
+        }
     }
 }

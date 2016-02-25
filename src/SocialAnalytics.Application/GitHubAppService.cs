@@ -7,143 +7,30 @@ namespace SocialAnalytics.Application
 {
     public class GitHubAppService : IGitHubAppService
     {
-        #region Stargazers
-
         public IEnumerable<GitHubCountResult> GetStargazersCount(ICollection<GitHubRequest> requests)
         {
-            var stargazersCounts = new List<GitHubCountResult>();
-
-            foreach (var request in requests)
-            {
-                var countResult = new GitHubCountResult();
-                var email = request.Email + "";
-                if (email.Equals("")) continue;
-
-                var login = GetLoginByEmail(email);
-
-                if (login.Equals("")) continue;
-
-                countResult.Email = email;
-                countResult.Count = GetCountStargazers(login);
-
-                stargazersCounts.Add(countResult);
-            }
-
-            return stargazersCounts;
+            return GetGitHubCountResults(requests, "stargazers");
         }
-
-        private int GetCountStargazers(string login)
-        {
-            var gitHubClient = new GitHubClient();
-
-            return gitHubClient.GetCountStargazers(login);
-        }
-
-        #endregion
-
-        #region Repositories
 
         public IEnumerable<GitHubCountResult> GetRepositoriesCount(ICollection<GitHubRequest> requests)
         {
-            var stargazersCounts = new List<GitHubCountResult>();
-
-            foreach (var request in requests)
-            {
-                var countResult = new GitHubCountResult();
-                var email = request.Email + "";
-                if (email.Equals("")) continue;
-
-                var login = GetLoginByEmail(email);
-
-                if (login.Equals("")) continue;
-
-                countResult.Email = email;
-                countResult.Count = GetCountRepositories(login);
-
-                stargazersCounts.Add(countResult);
-            }
-
-            return stargazersCounts;
+            return GetGitHubCountResults(requests, "repositories");
         }
-
-        private int GetCountRepositories(string login)
-        {
-            var gitHubClient = new GitHubClient();
-
-            return gitHubClient.GetCountRepositories(login);
-        }
-
-        #endregion
-
-        #region Followers
 
         public IEnumerable<GitHubCountResult> GetFollowersCount(ICollection<GitHubRequest> requests)
         {
-            var stargazersCounts = new List<GitHubCountResult>();
-
-            foreach (var request in requests)
-            {
-                var countResult = new GitHubCountResult();
-                var email = request.Email + "";
-                if (email.Equals("")) continue;
-
-                var login = GetLoginByEmail(email);
-
-                if (login.Equals("")) continue;
-
-                countResult.Email = email;
-                countResult.Count = GetCountFollowers(login);
-
-                stargazersCounts.Add(countResult);
-            }
-
-            return stargazersCounts;
+            return GetGitHubCountResults(requests, "followers");
         }
-
-        private int GetCountFollowers(string login)
-        {
-            var gitHubClient = new GitHubClient();
-
-            return gitHubClient.GetCountFollowers(login);
-        }
-
-        #endregion
-
-        #region Following
 
         public IEnumerable<GitHubCountResult> GetFollowingCount(ICollection<GitHubRequest> requests)
         {
-            var stargazersCounts = new List<GitHubCountResult>();
-
-            foreach (var request in requests)
-            {
-                var countResult = new GitHubCountResult();
-                var email = request.Email + "";
-                if (email.Equals("")) continue;
-
-                var login = GetLoginByEmail(email);
-
-                if (login.Equals("")) continue;
-
-                countResult.Email = email;
-                countResult.Count = GetCountFollowing(login);
-
-                stargazersCounts.Add(countResult);
-            }
-
-            return stargazersCounts;
+            return GetGitHubCountResults(requests, "following");
         }
 
-        private int GetCountFollowing(string login)
+        public IEnumerable<GitHubCountResult> GetCommitsCount(ICollection<GitHubRequest> requests)
         {
-            var gitHubClient = new GitHubClient();
-
-            return gitHubClient.GetCountFollowing(login);
+            return GetGitHubCountResults(requests, "commits");
         }
-
-        #endregion
-
-        #region Code Shared
 
         private string GetLoginByEmail(string email)
         {
@@ -152,6 +39,45 @@ namespace SocialAnalytics.Application
             return gitHubClient.GetLoginByEmail(email);
         }
 
-        #endregion
+        private IEnumerable<GitHubCountResult> GetGitHubCountResults(ICollection<GitHubRequest> requests, string type)
+        {
+            var countResults = new List<GitHubCountResult>();
+
+            foreach (var request in requests)
+            {
+                var countResult = new GitHubCountResult();
+                var email = request.Email + "";
+                if (email.Equals("")) continue;
+
+                countResult.Email = email;
+                countResult.Count = CountResult(GetLoginByEmail(email), type);
+
+                countResults.Add(countResult);
+            }
+
+            return countResults;
+        }
+
+        private int CountResult(string login, string type)
+        {
+            if (login.Equals("")) return 0;
+
+            var gitHubClient = new GitHubClient();
+            switch (type)
+            {
+                case "commits":
+                    return gitHubClient.GetCountCommits(login);
+                case "followers":
+                    return gitHubClient.GetCountFollowers(login);
+                case "following":
+                    return gitHubClient.GetCountFollowing(login);
+                case "stargazers":
+                    return gitHubClient.GetCountStargazers(login);
+                case "repositories":
+                    return gitHubClient.GetCountRepositories(login);
+                default:
+                    return 0;
+            }
+        }
     }
 }
