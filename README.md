@@ -2,7 +2,7 @@
 
 Developer Social Analytics API tem como objetivo de quantificar as principais métricas disponibilizadas pelas redes sociais.
 
-# GitHub
+## GitHub
 A quantificação das seguintes métricas estão disponível:
 
 * Commits;
@@ -11,6 +11,12 @@ A quantificação das seguintes métricas estão disponível:
 * Repositories;
 * Stargazers.
 
-** Quantificar o total de commits por perfil.**
+### Quantificar o total de commits por perfil
+
+* Verbo HTTP suportado: Post
+
+* Url: http://socialanalyticsdev.azurewebsites.net/api/v1/github/commits/count
+
+* Exemplo de 
 
 
