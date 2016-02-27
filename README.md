@@ -17,6 +17,21 @@ A quantificação das seguintes métricas estão disponível:
 
 * Url: http://socialanalyticsdev.azurewebsites.net/api/v1/github/commits/count
 
-* Exemplo de 
+* Para obter o total de commits, você deve passar um raw de e-mail como parâmetro. Exemplo:
+ 
+[
+{
+    "email": "joao@gmail.com"
+},
+{
+    "email": "tiago@hotmail.com"
+},
+{
+    "email": "fabio@yahoo.com"
+},
+{
+    "email": "master@gmail.com"
+}
+]
 
 
