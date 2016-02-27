@@ -42,4 +42,35 @@ A quantificação das seguintes métricas estão disponível:
     }
 ]
 
+### Quantificar o total de followers por perfil
+
+* Verbo HTTP suportado: Post
+
+* Url: http://socialanalyticsdev.azurewebsites.net/api/v1/github/followers/count
+
+* Para obter o total de followers, você deve passar um raw de e-mail como parâmetro. Exemplo:
+ 
+[ { "Email": "joao@gmail.com" }, { "Email": "tiago@hotmail.com" }, { "Email": "fabio@yahoo.com" }, { "Email": "master@gmail.com" } ]
+
+* Exemplo de retorno:
+
+[
+    {
+        "Email": "joao@gmail.com",
+        "Count": 377
+    },
+    {
+        "Email": "tiago@hotmail.com",
+        "Count": 0
+    },
+    {
+        "Email": "fabio@yahoo.com",
+        "Count": 0
+    },
+    {
+        "Email": "master@gmail.com",
+        "Count": 343
+    }
+]
+
 
