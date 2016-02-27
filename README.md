@@ -19,12 +19,7 @@ A quantificação das seguintes métricas estão disponível:
 
 * Para obter o total de commits, você deve passar um raw de e-mail como parâmetro. Exemplo:
  
-[
-  { "email": "joao@gmail.com" },
-  { "email": "tiago@hotmail.com" },
-  { "email": "fabio@yahoo.com" },
-  { "email": "master@gmail.com" }
-]
+[ { "Email": "joao@gmail.com" }, { "Email": "tiago@hotmail.com" }, { "Email": "fabio@yahoo.com" }, { "Email": "master@gmail.com" } ]
 
 * Exemplo de retorno:
 
