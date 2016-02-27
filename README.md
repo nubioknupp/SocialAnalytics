@@ -34,4 +34,25 @@ A quantificação das seguintes métricas estão disponível:
 }
 ]
 
+* Exemplo de retorno:
+
+[
+    {
+        "Email": "joao@gmail.com",
+        "Count": 377
+    },
+    {
+        "Email": "tiago@hotmail.com",
+        "Count": 0
+    },
+    {
+        "Email": "fabio@yahoo.com",
+        "Count": 0
+    },
+    {
+        "Email": "master@gmail.com",
+        "Count": 343
+    }
+]
+
 
