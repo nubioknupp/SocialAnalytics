@@ -11,6 +11,6 @@ A quantificação das seguintes métricas estão disponível:
 * Repositories;
 * Stargazers.
 
-** Quantificar o total de commits por perfil.
+** Quantificar o total de commits por perfil.**
 
 
