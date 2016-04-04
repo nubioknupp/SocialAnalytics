@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using SocialAnalytics.Application.Interfaces;
 using SocialAnalytics.Application.ViewModels;
 using SocialAnalytics.Infra.ServiceAgents.GitHubApi;
@@ -43,17 +45,21 @@ namespace SocialAnalytics.Application
         {
             var countResults = new List<GitHubCountResult>();
 
-            foreach (var request in requests)
+            Parallel.ForEach(requests.Where(req => !string.IsNullOrEmpty(req.Email)), new ParallelOptions
             {
-                var countResult = new GitHubCountResult();
-                var email = request.Email + "";
-                if (email.Equals("")) continue;
-
-                countResult.Email = email;
-                countResult.Count = CountResult(GetLoginByEmail(email), type);
+                //verificar se 10 vale a pena.
+                MaxDegreeOfParallelism = 10
+            }, request =>
+            {
+                var email = request.Email;
+                var countResult = new GitHubCountResult
+                {
+                    Email = email,
+                    Count = CountResult(GetLoginByEmail(email), type)
+                };
 
                 countResults.Add(countResult);
-            }
+            });
 
             return countResults;
         }

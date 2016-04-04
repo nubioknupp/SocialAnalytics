@@ -13,10 +13,10 @@ namespace SocialAnalytics.Services.REST.SocialAPI.Controllers
     [RoutePrefix("api/v1/github")]
     public class GitHubController : ApiController
     {
-        private readonly GitHubAppService _gitHubAppService = new GitHubAppService();
-
         private const string MessageErro = "Falha ao realizar requisição: Nenhum valor foi fornecido " +
                                            "para um ou mais parâmetros necessários.";
+
+        private readonly GitHubAppService _gitHubAppService = new GitHubAppService();
 
         [HttpPost]
         [Route("stargazers/count")]
